@@ -1,0 +1,16 @@
+
+
+.container-fluid {
+	height:100vh;
+	background-image: url('../img/TINTIT-BANNER.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading-row {
+	padding-top:200px;
+}
+
+.form-row {
+}
+
