@@ -55,7 +55,11 @@
 		// Send to Motorcheck api
 		$.post( "/reglookup", body, function( data ) {
 			// Handle response
+			console.log(data);
 		  $( "#result" ).html( data );
+
+		  // show loader
+			$("#gearLoader").hide()
 		});
 
 

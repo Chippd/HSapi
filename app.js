@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const request = require('request');
 const bodyParser = require('body-parser');
+const parser = require('xml2json');
 
 const port = process.env.PORT || 3050;
 
@@ -30,14 +31,29 @@ app.post("/reglookup", function(req, res){
 	// send request to motorcheck api using that reg
 	var url = "http://beta.motorcheck.ie/vehicle/reg/"+reg+"/identity/vin?_username=hubspot&_api_key=ee2a3d5b341f12a53e953e3ad5550de7dc1f9560";
 
+
 	request(url, function(error, response, body) {
+
+		console.log(response)
+
+		if (!error && response.statusCode == 200) { 
+			console.log(body);
+           var result = parser.toJson(body, {
+              object: false,
+              reversible: false,
+              coerce: true,
+              sanitize: true,
+              trim: true,
+              arrayNotation: false
+           });
+           res.set('Content-Type', 'application/json');
+           res.send(result);
+        }
 
 	  if(error){
 	  	res.send('error:', error)
       return
 	  }
-
-	  res.send(body)
 
 	});
 
