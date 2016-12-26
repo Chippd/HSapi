@@ -14,3 +14,7 @@
 .form-row {
 }
 
+#gearLoader {
+	display: none;
+}
+
