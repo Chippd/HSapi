@@ -54,16 +54,37 @@
 
 		// Send to Motorcheck api
 		$.post( "/reglookup", body, function( data ) {
+
 			// Handle response
 			console.log(data);
+			
 			var vehicle = data.response.vehicle;
 			var resultString = vehicle.year_of_manufacture + " " + vehicle.make + " " + vehicle.model + " - " + vehicle.body; 
 
 
 		  $( "#result" ).html(resultString);
 
-		  // show loader
+		  // hide loader
 			$("#gearLoader").hide()
+
+		})
+		.fail(function(response) {
+
+			// there was an error
+		   console.log(response);
+
+			// hide loader
+			$("#gearLoader").hide();
+
+			// show regForm again
+			$("#regForm").show();
+
+			if(response.status == 404){
+				alert('Reg number does not match ant vehicle')
+			} else {
+				alert('There was an error, please try again');
+			}
+		   
 		});
 
 

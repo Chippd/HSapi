@@ -48,12 +48,12 @@ app.post("/reglookup", function(req, res){
            });
            res.set('Content-Type', 'application/json');
            res.send(result);
+        } else if (response.statusCode == 404) {
+
+        	// vehicle not found
+        	res.status(404).send('No vehicle found');
         }
 
-	  if(error){
-	  	res.send('error:', error)
-      return
-	  }
 
 	});
 
