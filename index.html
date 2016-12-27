@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Sampling HubSpot's API</title>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="css/styles.css">
@@ -92,6 +94,44 @@
 			}
 		   
 		});
+
+
+		// prevent default submit behaviour
+		return false
+		
+	}
+
+	// Handle email submit
+	function handleEmailSubmit() {
+		
+		//hide form 
+		$("#emailForm").hide();
+
+		// show loader
+		$("#gearLoader").show()
+
+		// capture reg entered
+		var email = $('#email').val();
+		console.log("email is:", email);
+
+		// Send to HubSpot api
+		// $.post( "", body, function( data ) {
+
+
+		// })
+		// .fail(function(response) {
+
+		// 	// there was an error
+		//    console.log(response);
+
+		// 	// hide loader
+		// 	$("#gearLoader").hide();
+
+		// 	// show regForm again
+		// 	$("#emailForm").show();
+
+		   
+		// });
 
 
 		// prevent default behaviour
