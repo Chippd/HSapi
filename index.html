@@ -103,7 +103,10 @@
 
 	// Handle email submit
 	function handleEmailSubmit() {
-		
+
+
+		var url = "https://forms.hubspot.com/uploads/form/v2/632486/70f10f66-1f7a-4e9b-9d01-98ba6b375ce4?";
+
 		//hide form 
 		$("#emailForm").hide();
 
@@ -112,26 +115,35 @@
 
 		// capture reg entered
 		var email = $('#email').val();
-		console.log("email is:", email);
+		var carDetails = $('#result').text();
+		// console.log("details is:", email, carDetails);
+
+		// build url
+		url += "email="+encodeURIComponent(email);
+
+		url += "&car_details="+encodeURIComponent(carDetails);
+
+		console.log(url)
+
 
 		// Send to HubSpot api
-		// $.post( "", body, function( data ) {
+		$.post( url, function( data ) {
 
+			console.log(data)
+		})
+		.fail(function(response) {
 
-		// })
-		// .fail(function(response) {
+			// there was an error
+		   console.log(response);
 
-		// 	// there was an error
-		//    console.log(response);
+			// hide loader
+			$("#gearLoader").hide();
 
-		// 	// hide loader
-		// 	$("#gearLoader").hide();
-
-		// 	// show regForm again
-		// 	$("#emailForm").show();
+			// show regForm again
+			$("#emailForm").show();
 
 		   
-		// });
+		});
 
 
 		// prevent default behaviour

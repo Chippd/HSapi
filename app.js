@@ -34,7 +34,7 @@ app.post("/reglookup", function(req, res){
 
 	request(url, function(error, response, body) {
 
-		console.log(response)
+		// console.log(response)
 
 		if (!error && response.statusCode == 200) { 
 			console.log(body);
