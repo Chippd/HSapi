@@ -56,7 +56,11 @@
 		$.post( "/reglookup", body, function( data ) {
 			// Handle response
 			console.log(data);
-		  $( "#result" ).html( data );
+			var vehicle = data.response.vehicle;
+			var resultString = vehicle.year_of_manufacture + " " + vehicle.make + " " + vehicle.model + " - " + vehicle.body; 
+
+
+		  $( "#result" ).html(resultString);
 
 		  // show loader
 			$("#gearLoader").hide()
